@@ -40,14 +40,15 @@ def sir_steps(G, beta=0.08, gamma=0.05, initial_infected=None, steps=80, seed=7)
 class SIRKarateAnimation(MovingCameraScene):
     def construct(self):
         # Parameters
-        beta = 0.08     # infection probability per contact per step
+        beta = 0.1     # infection probability per contact per step
         gamma = 0.05    # recovery probability per step
-        steps = 120
+        steps = 60
         seed = 1
 
         # Build graph
         G = nx.karate_club_graph()
-        pos = nx.kamada_kawai_layout(G)
+        # fai in modo che occupi tutta la scena orizzontalmente
+        pos = nx.circular_layout(G)
 
         # Generate SIR state history
         history = sir_steps(G, beta=beta, gamma=gamma, steps=steps, seed=seed)
