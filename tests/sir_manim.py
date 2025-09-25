@@ -48,7 +48,7 @@ class SIRKarateAnimation(MovingCameraScene):
         # Build graph
         G = nx.karate_club_graph()
         # fai in modo che occupi tutta la scena orizzontalmente
-        pos = nx.circular_layout(G)
+        pos = nx.spring_layout(G, seed=seed)
 
         # Generate SIR state history
         history = sir_steps(G, beta=beta, gamma=gamma, steps=steps, seed=seed)
